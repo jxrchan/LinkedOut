@@ -16,7 +16,7 @@ const auth = (req, res, next) => {
       return res.status(401).jason({ status: "error", msg: "not authorised" });
     }
   } else {
-    return res.status(403).jason({ status: "error", msg: "forbidded" });
+    return res.status(403).json({ status: "error", msg: "forbidded" });
   }
 };
 
