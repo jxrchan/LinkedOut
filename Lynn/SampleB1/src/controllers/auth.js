@@ -1,4 +1,6 @@
 const AuthModel = require("../models/Auth");
+const Applicants = require("../models/Applicants");
+const Employers = require("../models/Employers");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
@@ -17,23 +19,49 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const register = async (req, res) => {
+//8/7 shorten register function
+const checkValidEmail = async (req, res) => {
   try {
     const auth = await AuthModel.findOne({ email: req.body.email });
     if (auth) {
       return res.status(400).json({ status: "error", msg: "duplicate email" });
     }
+    res.json({ status: "ok", msg: "email is valid" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({ status: "error", msg: "email check failed" });
+  }
+};
 
+//8/7 - new function
+const register = async (req, res) => {
+  try {
     const hash = await bcrypt.hash(req.body.password, 12);
     await AuthModel.create({
       email: req.body.email,
       hash,
       role: req.body.role || "Job Seeker",
     });
-    res.json({ status: "ok", msg: "user created" });
+    if (req.body.role === "Job Seeker") {
+      await Applicants.create({
+        name: req.body.name,
+        description: req.body.description,
+        email: req.body.email,
+      });
+    } else {
+      await Employers.create({
+        name: req.body.name,
+        description: req.body.description,
+        email: req.body.email,
+      });
+    }
+    res.status(200).json({
+      status: "ok",
+      msg: "Registration is complete. User is created.",
+    });
   } catch (error) {
-    console.error(error.message);
-    res.status(400).json({ status: "error", msg: "invalid registration" });
+    console.error(error);
+    res.status(400).json({ status: "error", msg: "Invalid registration" });
   }
 };
 
@@ -86,4 +114,10 @@ const refresh = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, register, login, refresh };
+module.exports = {
+  getAllUsers,
+  checkValidEmail,
+  login,
+  refresh,
+  register,
+};
