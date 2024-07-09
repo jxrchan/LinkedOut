@@ -1,0 +1,151 @@
+/* jobListingPage.css
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1c56ac;
+  text-decoration: none;
+}
+
+.header .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.header .nav-links li {
+  display: inline;
+}
+
+.header .nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: normal;
+}
+
+.job-listings {
+  margin-top: 20px;
+}
+
+.job-listing {
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.job-listing:hover {
+  border-color: #1c56ac;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-listing .job-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1c56ac;
+}
+
+.job-listing .company-name {
+  font-size: 16px;
+  font-weight: normal;
+  color: #666;
+}
+
+.job-listing .location,
+.job-listing .salary {
+  font-size: 14px;
+  color: #333;
+}
+
+.apply-button {
+  background-color: #1c56ac;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+  background-color: #003a75;
+} */
+
+.container {
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.job-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.job-item {
+  flex: 1 1 calc(33.333% - 20px);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-item div {
+  margin-bottom: 10px;
+}
+
+.job-item button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.job-item button:hover {
+  background-color: #0056b3;
+}

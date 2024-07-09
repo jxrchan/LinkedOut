@@ -1,0 +1,46 @@
+.terminatedJobContainer {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.terminatedJobDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.jobPosition {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.jobDescription {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.jobActions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.jobActionBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.jobActionBtn:hover {
+  background-color: #0056b3;
+}
