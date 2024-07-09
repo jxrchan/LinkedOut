@@ -1,32 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import styles from "./Modal.module.css";
+import styles from "./UpdateModal.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
-import UserContext from "../context/user";
 
 const OverLay = (props) => {
-  const userCtx = useContext(UserContext);
   const usingFetch = useFetch();
   const queryClient = useQueryClient();
-  const [title, setTitle] = useState(props.title);
-  const [author, setAuthor] = useState(props.author);
-  const [year, setYear] = useState(props.yearPublished);
+  const [position, setPosition] = useState(props.position);
+  const [description, setDescription] = useState(props.description);
 
-  const { mutate: callUpdateBook } = useMutation({
+  const updateJob = useMutation({
     mutationFn: async () =>
-      await usingFetch(
-        "/api/books/" + props.id,
-        "PATCH",
-        {
-          title,
-          author,
-          year,
-        },
-        userCtx.accessToken
-      ),
+      await usingFetch("/employers/jobs", "PATCH", {
+        position,
+        description,
+        id: props.id,
+      }),
     onSuccess: () => {
-      queryClient.invalidateQueries(["books"]);
+      queryClient.invalidateQueries(["active jobs"]);
       props.setShowUpdateModal(false);
     },
   });
@@ -38,50 +30,39 @@ const OverLay = (props) => {
         <br />
         <div className="row">
           <div className="col-md-3"></div>
-          <div className="col-md-3">Title</div>
+          <div className="col-md-3">Position</div>
           <input
             type="text"
             className="col-md-3"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
           />
           <div className="col-md-3"></div>
         </div>
 
         <div className="row">
           <div className="col-md-3"></div>
-          <div className="col-md-3">Author</div>
+          <div className="col-md-3">Description</div>
           <input
             type="text"
             className="col-md-3"
-            value={author}
-            onChange={(event) => setAuthor(event.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
           <div className="col-md-3"></div>
         </div>
 
-        <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-3">Year Published</div>
-          <input
-            type="text"
-            className="col-md-3"
-            value={year}
-            onChange={(event) => setYear(event.target.value)}
-          />
-          <div className="col-md-3"></div>
-        </div>
         <br />
         <div className="row">
           <div className="col-md-3"></div>
-          <button className="col-md-3" onClick={callUpdateBook}>
-            update
+          <button className="col-md-3" onClick={updateJob.mutate}>
+            Update
           </button>
           <button
             className="col-md-3"
             onClick={() => props.setShowUpdateModal(false)}
           >
-            cancel
+            Cancel
           </button>
           <div className="col-md-3"></div>
         </div>
@@ -96,9 +77,8 @@ const UpdateModal = (props) => {
       {ReactDOM.createPortal(
         <OverLay
           id={props.id}
-          title={props.title}
-          author={props.author}
-          yearPublished={props.yearPublished}
+          position={props.position}
+          description={props.description}
           setShowUpdateModal={props.setShowUpdateModal}
         />,
         document.querySelector("#modal-root")

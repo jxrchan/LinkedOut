@@ -13,7 +13,7 @@ const auth = (req, res, next) => {
       next();
     } catch (error) {
       console.error(error.message);
-      return res.status(401).jason({ status: "error", msg: "not authorised" });
+      return res.status(401).json({ status: "error", msg: "not authorised" });
     }
   } else {
     return res.status(403).jason({ status: "error", msg: "forbidded" });

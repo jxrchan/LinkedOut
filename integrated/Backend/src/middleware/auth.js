@@ -13,10 +13,10 @@ const auth = (req, res, next) => {
       next();
     } catch (error) {
       console.error(error.message);
-      return res.status(401).jason({ status: "error", msg: "not authorised" });
+      return res.status(401).json({ status: "error", msg: "not authorised" });
     }
   } else {
-    return res.status(403).jason({ status: "error", msg: "forbidded" });
+    return res.status(403).json({ status: "error", msg: "forbidded" });
   }
 };
 
@@ -30,7 +30,7 @@ const authAdmin = (req, res, next) => {
     try {
       const decoded = jwt.verify(token, process.env.ACCESS_SECRET);
       console.log(decoded);
-      if (decoded.role === "admin") {
+      if (decoded.role === "Employer") {
         req.decoded = decoded;
         next();
       } else {
