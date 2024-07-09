@@ -11,7 +11,7 @@
   margin: 0 auto;
 }
 
-body.register-body {
+.register-body {
   padding: 0;
   background-image: url("https://truecommerce.ecutopia.com/wp-content/uploads/2019/02/ecUtopia-Web-Vendor-Portal-Background.jpg");
   background-size: cover;
