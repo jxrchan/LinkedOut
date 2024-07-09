@@ -34,7 +34,7 @@ const Registration = (props) => {
         <div className="container registration-container">
           <h2 className="text-center">Sign Up Form</h2>
           <div className="form-group">
-            <label htmlFor="roles">Register as</label>
+            <div>Register as</div>
             <select
               name="roles"
               id="roles"
@@ -52,7 +52,7 @@ const Registration = (props) => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <div>Email</div>
             <input
               className="form-control"
               placeholder="hello@gmail.com"
