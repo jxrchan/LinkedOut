@@ -14,13 +14,13 @@ const {
   validateCompleteRegistration,
   validateCheckEmail,
 } = require("../validators/auth");
-const checkErrors = require("../validators/checkErrors");
+const checkErrorsLogin = require("../validators/checkErrorsLogin");
 const { authAdmin } = require("../middleware/auth");
 
 router.get("/users", authAdmin, getAllUsers);
-router.post("/register", checkValidEmail);
-router.put("/register", register);
-router.post("/login", login);
-router.post("/refresh", refresh);
+router.post("/register", validateCheckEmail, checkErrorsLogin, checkValidEmail);
+router.put("/register", validateRegistrationData, checkErrorsLogin, register);
+router.post("/login", validateLoginData, checkErrorsLogin, login);
+router.post("/refresh", validateRefreshToken, checkErrorsLogin, refresh);
 
 module.exports = router;
