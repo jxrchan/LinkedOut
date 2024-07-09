@@ -33,7 +33,7 @@ const Login = (props) => {
   }, [data]);
 
   return (
-    <body className="login-body">
+    <div className="login-body">
       <div className="container">
         {isError && (
           <div className="alert alert-danger">{JSON.stringify(error)}</div>
@@ -93,7 +93,7 @@ const Login = (props) => {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 
