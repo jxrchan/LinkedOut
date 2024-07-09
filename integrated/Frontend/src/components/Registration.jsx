@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import ProfileModal from "./ProfileModal";
+import "./Registration.css";
 
 const Registration = (props) => {
   const usingFetch = useFetch();
