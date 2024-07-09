@@ -5,40 +5,38 @@ import styles from "./Modal.module.css";
 import useFetch from "../hooks/useFetch";
 
 const OverLay = (props) => {
+  const usingFetch = useFetch();
+  const [email, setEmail] = useState(props.email);
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [role, setRole] = useState(props.role);
 
-const usingFetch = useFetch();
-const [email, setEmail] = useState(props.email);
-const [password, setPassword] = useState("");
-const [name, setName] = useState("");
-const [description, setDescription] = useState("");
-const [role, setRole] = useState(props.role)
-
-const {mutate} = useMutation({
+  const { mutate } = useMutation({
     mutationFn: async () => {
-      await usingFetch("/auth/register", "PUT", { email, 
-        password, role, name, description
-       }, );
+      await usingFetch("/auth/register", "PUT", {
+        email,
+        password,
+        role,
+        name,
+        description,
+      });
     },
-    onSuccess: () => props.setShowProfileModal(false)
+    onSuccess: () => props.setShowProfileModal(false),
   });
 
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
         <br />
+        <h6 className="text-center">Complete your registration</h6>
         <br />
-        Complete your registration 
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-3">Email</div>
-          <input
-            type="text"
-            className="col-md-3"
-            value={email}
-          />
+          <input type="text" className="col-md-3" value={email} />
           <div className="col-md-3"></div>
         </div>
-
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-3">Password</div>
@@ -50,9 +48,7 @@ const {mutate} = useMutation({
           />
           <div className="col-md-3"></div>
         </div>
-
         <br />
-
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-3">Name</div>
@@ -65,15 +61,13 @@ const {mutate} = useMutation({
           />
           <div className="col-md-3"></div>
         </div>
-
-        <br/> 
-
+        <br />
         <div className="row">
           <div className="col-md-3"></div>
           <div className="col-md-3">Description</div>
           <input
             placeholder="Please provide a personal statement or a description of your company"
-            style= {{height: "50px"}}
+            style={{ height: "50px" }}
             type="text"
             className="col-md-3"
             value={description}
@@ -81,9 +75,7 @@ const {mutate} = useMutation({
           />
           <div className="col-md-3"></div>
         </div>
-
-        <br/> 
-
+        <br />
         <div className="row">
           <div className="col-md-3"></div>
           <button className="col-md-3" onClick={mutate}>
@@ -107,9 +99,9 @@ const ProfileModal = (props) => {
     <>
       {ReactDOM.createPortal(
         <OverLay
-          email = {props.email}
-          setShowProfileModal = {props.setShowProfileModal}
-          role = {props.role}
+          email={props.email}
+          setShowProfileModal={props.setShowProfileModal}
+          role={props.role}
         />,
         document.querySelector("#modal-root")
       )}
