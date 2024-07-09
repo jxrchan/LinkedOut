@@ -1,0 +1,74 @@
+.container {
+  margin: 20px auto;
+  max-width: 1200px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.job-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.job-item {
+  flex: 1 1 calc(33.333% - 20px);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-item div {
+  margin-bottom: 10px;
+}
+
+.job-item button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.job-item button:hover {
+  background-color: #0056b3;
+}
+
+.banner {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.bannerTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  mix-blend-mode: multiply;
+}

@@ -1,95 +1,159 @@
-import React, { useContext, useState } from "react";
-import Book from "./Book";
+import React, { useState, useEffect } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
-import UserContext from "../context/user";
+import TerminatedJob from "./TerminatedJob";
+import Job from "./Job";
+import styles from "./Display.module.css";
 
-const Display = () => {
-  const userCtx = useContext(UserContext);
+const Display = (props) => {
+  const [employerId, setEmployerId] = useState("");
+  const [employerName, setEmployerName] = useState('');
+  const [description, setDescription] = useState("");
+  const [position, setPosition] = useState("");
+
+
+  // const userCtx = useContext(UserContext);
   const queryClient = useQueryClient();
   const usingFetch = useFetch();
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [year, setYear] = useState("");
 
-  const { isSuccess, isError, error, isFetching, data } = useQuery({
-    queryKey: ["books"],
-    queryFn: async () =>
-      await usingFetch("/api/books", undefined, undefined, userCtx.accessToken),
+  // Get Employer Id
+  const {mutate,
+    isSuccess: isEmployerSuccess,
+    isError: isEmployerError,
+    error: employerError,
+    isFetching: isEmployerFetching,
+    data: employerData,
+  } = useMutation({mutationFn: async () =>
+      await usingFetch(`/employers`, "POST", {email: props.email}),
   });
 
-  const mutation = useMutation({
-    mutationFn: async () =>
+  useEffect(()=> {
+    mutate();
+  }, [])
+
+ 
+  useEffect(() => {
+    if (isEmployerSuccess && employerData) {
+      setEmployerId(employerData._id);
+      setEmployerName(employerData.name);
+    }
+  }, [isEmployerSuccess, employerData]);
+
+  // Get Employer Active Jobs
+  const {
+    isSuccess: isJobSuccess,
+    isError: isJobError,
+    error: jobError,
+    isFetching: isJobFetching,
+    data: jobData,
+  } = useQuery({
+    queryKey: ["active jobs"],
+    queryFn: async () =>
+      await usingFetch(`/employers/jobs/${employerId}`, undefined, undefined),
+    enabled: !!employerId,
+  });
+
+  // Get Employer Inactive Jobs
+  const {
+    isSuccess: isTerminatedJobSuccess,
+    isError: isTerminatedJobError,
+    error: terminatedJobError,
+    isFetching: isTerminatedJobFetching,
+    data: terminatedJobData,
+  } = useQuery({
+    queryKey: ["terminated jobs"],
+    queryFn: async () =>
       await usingFetch(
-        "/api/books",
-        "PUT",
-        { title, author, year },
-        userCtx.accessToken
+        `/employers/terminated-jobs/${employerId}`,
+        undefined,
+        undefined
       ),
+    enabled: !!employerId,
+  });
+
+  const createJob = useMutation({
+    mutationFn: async () =>
+      await usingFetch("/employers/jobs", "PUT", {
+        position: position,
+        description: description,
+        employer: employerId,
+      }),
     onSuccess: () => {
-      setTitle("");
-      setAuthor("");
-      setYear("");
-      queryClient.invalidateQueries(["books"]);
+      setPosition("");
+      setDescription("");
+      queryClient.invalidateQueries(["active jobs"]);
     },
   });
 
   return (
-    <div className="container">
-      <h1>Book List</h1>
-      <div className="row">
-        <input
-          type="text"
-          value={title}
-          placeholder="title"
-          className="col-md-3"
-          onChange={(event) => setTitle(event.target.value)}
-        />
-        <input
-          type="text"
-          value={author}
-          placeholder="author"
-          className="col-md-3"
-          onChange={(event) => setAuthor(event.target.value)}
-        />
-        <input
-          type="text"
-          value={year}
-          placeholder="year published"
-          className="col-md-3"
-          onChange={(event) => setYear(event.target.value)}
-        />
-        <button className="col-md-3" onClick={mutation.mutate}>
-          add
-        </button>
-      </div>
-      <br />
-      <br />
-      <div className="row">
-        <div className="col-md-3">Title</div>
-        <div className="col-md-3">Author</div>
-        <div className="col-md-2">Year Published</div>
-        <div className="col-md-2"></div>
-        <div className="col-md-2"></div>
+    <div className={styles.displayContainer}>
+      {isEmployerFetching && <h1>Loading...</h1>}
+      {isEmployerError && <div>{employerError.message}</div>}
+
+      <img src='../../public/LinkedOut.png'/>
+
+      <div className={styles.banner}>
+        <div className={styles.bannerTitle}>{`${employerName}'s Dashboard`}</div>
       </div>
 
-      {isFetching && <h1>Loading...</h1>}
+      <div className={styles.inputContainer}>
+        <input
+          type="text"
+          value={position}
+          placeholder="Position"
+          onChange={(e) => setPosition(e.target.value)}
+        />
+        <input
+          type="text"
+          value={description}
+          placeholder="Description"
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button onClick={createJob.mutate}>Create New Job</button>
+      </div>
 
-      {isError && <div>{error.message}</div>}
-      {/* {mutation.isError && <div>{mutation.error.message}</div>} */}
+      <div className={styles.jobListContainer}>
+        <div className={styles.jobListTitle}>Active Job Listings</div>
 
-      {isSuccess &&
-        data.map((item) => {
-          return (
-            <Book
-              key={item._id}
-              id={item._id}
-              title={item.title}
-              author={item.author}
-              yearPublished={item.year_published}
-            />
-          );
-        })}
+        {isJobFetching && <h1>Loading...</h1>}
+        {isJobError && <div>{jobError.message}</div>}
+        {/* {isJobSuccess && JSON.stringify(jobData)} */}
+        {isJobSuccess &&
+          jobData.map((item) => {
+            return (
+              <Job
+                key={item._id}
+                id={item._id}
+                applicants={item.applicants}
+                position={item.position}
+                description={item.description}
+                created={item.created}
+                updated={item.updated}
+              />
+            );
+          })}
+      </div>
+
+      <div className={styles.jobListContainer}>
+        <div className={styles.jobListTitle}>Terminated Job Listings</div>
+
+        {isTerminatedJobFetching && <h1>Loading...</h1>}
+        {isTerminatedJobError && <div>{terminatedJobError.message}</div>}
+        {/* {isTerminatedJobSuccess && JSON.stringify(terminatedJobData)} */}
+        {isTerminatedJobSuccess &&
+          terminatedJobData.map((item, idx) => {
+            return (
+              <TerminatedJob
+                key={item._id}
+                id={item._id}
+                applicants={item.applicants}
+                position={item.position}
+                description={item.description}
+                created={item.created}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 };

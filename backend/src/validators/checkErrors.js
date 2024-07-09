@@ -10,4 +10,4 @@ const checkErrors = (req, res, next) => {
   }
 };
 
-module.exports = checkErrors;
+module.exports = { checkErrors };

@@ -3,6 +3,7 @@ import useFetch from "../hooks/useFetch";
 import UserContext from "../context/user";
 import { jwtDecode } from "jwt-decode";
 import { useQuery } from "@tanstack/react-query";
+import "./Login.css";
 
 const Login = (props) => {
   const usingFetch = useFetch();
@@ -27,61 +28,75 @@ const Login = (props) => {
       userCtx.setAccessToken(data.access);
       const decoded = jwtDecode(data.access);
       userCtx.setRole(decoded.role);
+      userCtx.setLoggedInUserRole(decoded.role); // Set logged-in user role here
     }
   }, [data]);
 
-  //   const handleLogin = async () => {
-  //     const res = await usingFetch("/auth/login", "POST", { email, password });
+  useEffect(() => {
+    props.setEmail(email);
+  }, [email]);
 
-  //     userCtx.setAccessToken(res.access);
-  //     const decoded = jwtDecode(res.access);
-  //     userCtx.setRole(decoded.role);
-  //   };
 
   return (
-    <div>
-      {isError && JSON.stringify(error)}
-      <br></br>
-      <div className="row">
-        <div className="col-md-4">
-          <input
-            type="text"
-            className="col-md-4"
-            placeholder="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-          <div className="col-md-4"></div>
+    <div className="login-body">
+      <div className="container">
+        {isError && (
+          <div className="alert alert-danger">{JSON.stringify(error)}</div>
+        )}
+        <div className="login-container">
+          <div className="row mb-3">
+            <div className="col text-center">
+              <img
+                src="/LinkedOut.png"
+                alt="User icon"
+                className="img-fluid login-logo"
+              />
+            </div>
+          </div>
+
+          <div className="row mb-3">
+            <div className="col">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="row mb-3">
+            <div className="col">
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="row mb-3">
+            <div className="col">
+              <button className="btn btn-primary w-100" onClick={refetch}>
+                Login
+              </button>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col">
+              <button
+                className="btn btn-secondary w-100"
+                onClick={() => props.setShowLogin(false)}
+              >
+                Register
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-4">
-          <input
-            type="password"
-            className="col-md-4"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-          <div className="col-md-4"></div>
-        </div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-4"></div>
-        <button className="col-md-4" onClick={refetch}>
-          Login
-        </button>
-        <div className="col-md-4"></div>
-      </div>
-
-      <div className="row">
-        <div className="col-md-4"></div>
-        <button className="col-md-4" onClick={() => props.setShowLogin(false)}>
-          Register
-        </button>
-        <div className="col-md-4"></div>
       </div>
     </div>
   );
