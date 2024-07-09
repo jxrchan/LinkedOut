@@ -18,8 +18,7 @@
   z-index: 100;
   overflow: hidden;
 }
-
-Modal Overlay .modalOverlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
