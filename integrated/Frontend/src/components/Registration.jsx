@@ -30,9 +30,9 @@ const Registration = (props) => {
           setShowProfileModal={setShowProfileModal}
         />
       )}
-      <body className="register-body">
+      <div className="register-body">
         <div className="container registration-container">
-          <h2 className="text-center">Sign Up</h2>
+          <h2 className="text-center">Sign Up Form</h2>
           <div className="form-group">
             <label htmlFor="roles">Register as</label>
             <select
@@ -78,7 +78,7 @@ const Registration = (props) => {
             </button>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };
