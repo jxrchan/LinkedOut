@@ -43,7 +43,7 @@ const OverLay = (props) => {
         <div className="row">
           <div className="col-md-3"></div>
           <button
-            className="col-md-6"
+            className="col-md-12"
             onClick={() => props.setShowResumeModal(false)}
           >
             Cancel
