@@ -3,6 +3,7 @@
 
 # OverView
 Linkedout is a job portal application built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It connects job seekers and employers, offering functionalities for job posting, applying for job directly through the platform and more.
+
 For project planning and progress, visit our public board [here](https://trello.com/b/jukg9IGY/project-3)
 
 # Features
