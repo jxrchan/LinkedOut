@@ -24,13 +24,12 @@ There will be a pop up box coming down which asks for password, name and descrip
 
 ## Job Seeker's Dashboard
 
-image
+<img width="1245" alt="Screenshot 2024-07-10 at 2 41 58 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/a942e115-776e-4d02-9745-129707c77c61">
+After logging in, for example, you can see seeker's Dashboard. There is a list of jobs posted by different companies. When a job seeker finds a job they're interested in, they click on the "Apply" button associated with that job listing. Grey colour "Apply" button is the job you have already applied.
 
-After logging in, you can see Emma's Dashboard. There is a list of jobs posted by different companies. When a job seeker finds a job they're interested in, they click on the "Apply" button associated with that job listing.
+<img width="715" alt="Screenshot 2024-07-10 at 2 42 16 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/202ca073-1e10-4f5e-905c-16d8a0335f35">
 
-image
-
-Pop-up Box: A pop-up box appears, displaying detailed information such as 
+Clicking "Apply" button shows a pop-up Box, displaying detailed information such as 
 * Job Title: Clearly states the position being applied for.
 * Job Description: Provides a comprehensive description of the job role and responsibilities.
 * Employer's Name: Identifies the company offering the job.
