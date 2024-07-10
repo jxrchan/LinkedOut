@@ -31,9 +31,9 @@ When a job seeker finds a job they're interested in, they click on the "Apply" b
 <img width="843" alt="Screenshot 2024-07-10 at 4 42 27 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/75b937b8-cd2e-40e9-81ee-8977fa855ece">
 
 Clicking "Apply" button shows a pop-up Box, displaying detailed information such as 
-* ***Job Title***: Clearly states the position being applied for.
-* ***Job Description***: Provides a comprehensive description of the job role and responsibilities.
-* ***Employer's Name***: Identifies the company offering the job.
+* ***Job Title***: job position you are going to apply for.
+* ***Job Description***: Provides a clear description of the job role and responsibilities.
+* ***Employer's Name***: Name of the company or employer offering the job.
 * ***About Employer***: Offers a brief introduction of the employer.
 * ***Resume Submission box***: Job Seeker fills out their related work experience, education, name, and contact.
  Then, you can just click "Submit Resume" to submit your resume to a company or "Cancel" if you want to go back to your Dashboard.
