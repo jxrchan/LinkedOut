@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import styles from "./ApplyJobModal.module.css";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
 import UserContext from "../context/user";
 
@@ -10,21 +10,20 @@ const OverLay = (props) => {
   const usingFetch = useFetch();
   const queryClient = useQueryClient();
   const [resumeText, setResumeText] = useState("");
-
   const changeHandler = (event) => {
     setResumeText(event.target.value);
   };
 
-  // const { mutate: applyJob } = useMutation({
-  //   mutationFn: async () =>
-  //     await usingFetch("/api/jobs/apply", "POST", {
-  //       applicantId: props.applicantId,
-  //       jobId: props.jobId,
-  //     }),
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries(["jobs"]);
-  //   },
-  // });
+  const { mutate: applyJob } = useMutation({
+    mutationFn: async () =>
+      await usingFetch("/api/jobs/apply", "POST", {
+        applicantId: props.applicantId,
+        jobId: props.jobId,
+      }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["jobs"]);
+    },
+  });
 
   // const { mutate: submitResume } = useMutation({
   //   mutationFn: async () =>
@@ -36,8 +35,13 @@ const OverLay = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+  
     try {
       console.log(resumeText);
+
+      applyJob();
+
       const response = await usingFetch(
         "/api/jobs/resume/" + props.jobId,
         "POST",
@@ -46,12 +50,14 @@ const OverLay = (props) => {
           document: resumeText,
         }
       );
-
+  
       console.log(response.data);
+  
+      queryClient.invalidateQueries('applied status', props.jobId);
     } catch (error) {
       console.error("There was an error submitting the resume:", error);
     }
-
+  
     props.setShowApplyJobModal(false);
   };
 

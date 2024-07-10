@@ -4,17 +4,19 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
 import styles from "./JobListForApp.module.css";
 
-
 const JobListForApp = (props) => {
   const usingFetch = useFetch();
   const [showApplyJobModal, setShowApplyJobModal] = useState(false);
-  const [checkAppliedJob, setCheckAppliedJob] = useState("unapplied")
-
+  const [checkAppliedJob, setCheckAppliedJob] = useState("unapplied");
 
   const fetchCheckAppliedJob = useQuery({
     queryKey: ["applied status", props.jobId],
-    queryFn: async () => await usingFetch("/api/applied-jobs", "POST", {jobId: props.jobId, applicantId: props.applicantId})
-  })
+    queryFn: async () =>
+      await usingFetch("/api/applied-jobs", "POST", {
+        jobId: props.jobId,
+        applicantId: props.applicantId,
+      }),
+  });
 
   const fetchEmployerData = useQuery({
     queryKey: ["employer"],
@@ -23,8 +25,8 @@ const JobListForApp = (props) => {
   });
 
   useEffect(() => {
-    if(fetchCheckAppliedJob.isSuccess && fetchCheckAppliedJob.data)
-    setCheckAppliedJob(fetchCheckAppliedJob.data);
+    if (fetchCheckAppliedJob.isSuccess && fetchCheckAppliedJob.data)
+      setCheckAppliedJob(fetchCheckAppliedJob.data);
   }, [fetchCheckAppliedJob]);
 
   return (
@@ -43,8 +45,11 @@ const JobListForApp = (props) => {
         )}
 
       <div className={styles["job-item"]}>
-        <div> { fetchEmployerData.isSuccess &&
-        fetchEmployerData.data && fetchEmployerData.data.name}</div>
+        <div>
+          {fetchEmployerData.isSuccess &&
+            fetchEmployerData.data &&
+            fetchEmployerData.data.name}
+        </div>
         <div
           style={{
             textAlign: "center",
@@ -52,14 +57,21 @@ const JobListForApp = (props) => {
             fontWeight: "bold",
           }}
         >
-          {props.title} 
+          {props.title}
         </div>
         {/* <div>{props.jobDes}</div> */}
         {console.log(checkAppliedJob)}
         {checkAppliedJob === "unapplied" && (
-          <button className={styles["button-unapplied"]} onClick={() => setShowApplyJobModal(true)}>Apply</button>
+          <button
+            className={styles["button-unapplied"]}
+            onClick={() => setShowApplyJobModal(true)}
+          >
+            Apply
+          </button>
         )}
-        {checkAppliedJob === "applied" && ( <button className= {styles["button-applied"]}> Applied </button>)}
+        {checkAppliedJob === "applied" && (
+          <button className={styles["button-applied"]}> Applied </button>
+        )}
       </div>
     </>
   );
