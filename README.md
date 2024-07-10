@@ -26,7 +26,7 @@ There will be a pop up box coming down which asks for password, name and descrip
 
 <img width="1253" alt="Screenshot 2024-07-10 at 3 19 07 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/c051dc80-f048-42dc-89d9-5b9bcb206e2d">
 
-After logging in, for example, you can see seeker's Dashboard. There is a list of jobs posted by different companies. 
+After logging in as a ***Job Seeker***, for example, you can see ***seeker***'s Dashboard. There is a list of jobs posted by different companies. 
 When a job seeker finds a job they're interested in, they click on the "Apply" button associated with that job listing. Grey colour "Apply" button is the job you have already applied.
 
 <img width="753" alt="Screenshot 2024-07-10 at 3 19 18 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/6f800f26-5e01-4797-84ec-fc06037f6bda">
@@ -45,7 +45,7 @@ Clicking "Apply" button shows a pop-up Box, displaying detailed information such
 
 <img width="986" alt="Screenshot 2024-07-10 at 3 09 19 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/ad1d7435-455a-4d85-acf6-9f3f08e57f84">
 
-You can also register and log in as a Employer. This is General Disassembly's Dashboard.
+You can also register and log in as a ***Employer***. This is ***General Disassembly***'s Dashboard.
 
 ***Post a Job***:Employers can create new job postings by filling in details such as job position and job description and any other relevant details about the position.
 
