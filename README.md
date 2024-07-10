@@ -66,7 +66,7 @@ Clicking "see applicants" shows this image where you can see the name of applica
 
 <img width="1382" alt="Screenshot 2024-07-10 at 4 40 32 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/38718eb2-d967-4282-979f-6a29bd9eef62">
 
-This is John Doe's full resume. You can click "cancel" button to go back to the image before.
+This is John Doe's resume. You can scroll up and down to see full resume and click "cancel" button to go back to the image before.
 
 
 # Technologies Used
