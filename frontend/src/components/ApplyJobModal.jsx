@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import styles from "./ApplyJobModal.module.css";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
 import UserContext from "../context/user";
 
@@ -9,52 +9,49 @@ const OverLay = (props) => {
   const userCtx = useContext(UserContext);
   const usingFetch = useFetch();
   const queryClient = useQueryClient();
-  const [selectedFile, setSelectedFile] = useState();
-  const [isFilePicked, setIsFilePicked] = useState(false);
-
-  // const fileInput = createRef();
-  const formData = new FormData();
-
+  const [resumeText, setResumeText] = useState("");
   const changeHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-    event.target.files[0] && setIsFilePicked(true);
+    setResumeText(event.target.value);
   };
-
-  // formData.set("resume", fileInput.current.value);
-  formData.append("File", selectedFile);
 
   const { mutate: applyJob } = useMutation({
     mutationFn: async () =>
-      await usingFetch("/api/jobs/apply", "POST", {applicantId: props.applicantId ,jobId: props.jobId }),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["jobs"]);
-    },
+      await usingFetch("/api/jobs/apply", "POST", {
+        applicantId: props.applicantId,
+        jobId: props.jobId,
+      }),
   });
 
-  const { mutate: submitResume } = useMutation({
-    mutationFn: async () =>
-      await usingFetch("/api/jobs/resume/" + props.id, "POST", formData),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["jobs"]);
-    },
-  });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSubmit = async () => {
-    if (selectedFile) {
-      await Promise.all([applyJob(), submitResume()]);
-    } else {
-      await applyJob();
+    try {
+      applyJob();
+      const response = await usingFetch(
+        "/api/jobs/resume/" + props.jobId,
+        "POST",
+        {
+          applicantId: props.applicantId,
+          document: resumeText,
+        }
+      );
+      console.log(response.data);
+      queryClient.invalidateQueries("jobs");
+      queryClient.invalidateQueries("applied status", props.jobId);
+    } catch (error) {
+      console.error("There was an error submitting the resume:", error);
     }
+
     props.setShowApplyJobModal(false);
   };
-
 
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>
         <div className={styles.row}>
           <div className={styles.col}>
-            <strong>Title:</strong> <p style ={{textTransform: "uppercase"}}> {props.title}  </p>
+            <strong>Title:</strong>{" "}
+            <p style={{ textTransform: "uppercase" }}> {props.title} </p>
           </div>
         </div>
         <div className={styles.row}>
@@ -73,15 +70,19 @@ const OverLay = (props) => {
           </div>
         </div>
         <div className={styles.row}>
-          {/* <button className="col-md-3" onClick={callUpdateBook}>
-            update
-          </button> */}
-          <input type="file" name="file" onChange={changeHandler}></input>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              value={resumeText}
+              onChange={changeHandler}
+              placeholder="Enter your resume here"
+              className={styles.textarea}
+              required
+            ></textarea>
+            <br />
+            <button type="submit">Submit Resume</button>
+          </form>
         </div>
         <div className={styles.row}>
-          <button type="submit" onClick={handleSubmit}>
-            Submit
-          </button>
           <button
             className={`${styles.cancel}`}
             onClick={() => props.setShowApplyJobModal(false)}
@@ -99,9 +100,9 @@ const UpdateModal = (props) => {
     <>
       {ReactDOM.createPortal(
         <OverLay
-          applicantId  = {props.applicantId}
+          applicantId={props.applicantId}
           jobId={props.jobId}
-          employerData = {props.employerData}
+          employerData={props.employerData}
           title={props.title}
           jobDes={props.jobDes}
           setShowApplyJobModal={props.setShowApplyJobModal}

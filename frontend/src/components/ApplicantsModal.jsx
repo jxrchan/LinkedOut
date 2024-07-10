@@ -1,34 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import Resume from "./Resume";
+import Resume from "./ResumeModal";
 import styles from "./ApplicantsModal.module.css";
 
 const OverLay = (props) => {
-  return (
-    <div className={styles.backdrop}>
-      <div className={styles.modal}>
-        {props.applicants.map((item) => {
-          return (
-            <>
-              <div className={styles.row}>{item.name}</div>
-              <div className={styles.row}>
-                <Resume jobId={props.jobId} applicantId={item._id} />
-              </div>
-            </>
-          );
-        })}
+  const [showResumeModal, setShowResumeModal] = useState(false);
+  const [applicantId, setApplicantId] = useState("");
 
-        <button
-          className={styles.closeButton}
-          onClick={() => {
-            props.setShowApplicantsModal(false);
-          }}
-        >
-          {" "}
-          Close{" "}
-        </button>
+  const handleSeeResume = async (item) => {
+    setShowResumeModal(true);
+    setApplicantId(item._id);
+  };
+
+  return (
+    <>
+      {showResumeModal && (
+        <Resume
+          applicantId={applicantId}
+          jobId={props.jobId}
+          setShowResumeModal={setShowResumeModal}
+        />
+      )}
+
+      <div className={styles.backdrop}>
+        <div className={styles.modal}>
+          <h1> Click Applicants to see their Resume</h1>
+          {props.applicants.map((item) => {
+            return (
+              <button
+                onClick={() => {
+                  handleSeeResume(item);
+                }}
+              >
+                {item.name}
+              </button>
+            );
+          })}
+
+          <button
+            className={styles.closeButton}
+            onClick={() => {
+              props.setShowApplicantsModal(false);
+            }}
+          >
+            {" "}
+            Close{" "}
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

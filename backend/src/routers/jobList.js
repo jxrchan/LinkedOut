@@ -7,7 +7,8 @@ const {
   getAllActiveJobs,
   submitResume,
   getApplicant,
-  applyJob
+  applyJob,
+  checkAppliedJob
 } = require("../controllers/jobList");
 
 const {
@@ -20,10 +21,11 @@ const checkErrors = require("../validators/checkErrors");
 const { authAdmin, auth } = require("../middleware/auth");
 
 router.get("/jobs/seed", seedJobs);
-router.post("/applicant", getApplicant)
+router.post("/applicant", getApplicant);
 
 router.get("/jobs", getAllActiveJobs);
 router.post("/jobs", getJobById);
+router.post("/applied-jobs", checkAppliedJob)
 router.post("/jobs/apply", applyJob)
 router.post("/jobs/resume/:id", submitResume);
 

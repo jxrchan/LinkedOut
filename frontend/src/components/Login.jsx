@@ -28,14 +28,13 @@ const Login = (props) => {
       userCtx.setAccessToken(data.access);
       const decoded = jwtDecode(data.access);
       userCtx.setRole(decoded.role);
-      userCtx.setLoggedInUserRole(decoded.role); // Set logged-in user role here
+      userCtx.setLoggedInUserRole(decoded.role);
     }
   }, [data]);
 
   useEffect(() => {
     props.setEmail(email);
   }, [email]);
-
 
   return (
     <div className="login-body">

@@ -1,17 +1,17 @@
 .login-body {
   margin: 0;
   padding: 0;
-  background-image: url("https://truecommerce.ecutopia.com/wp-content/uploads/2019/02/ecUtopia-Web-Vendor-Portal-Background.jpg");
+  background-image: url("https://en.idei.club/uploads/posts/2023-03/1679145394_en-idei-club-p-blue-office-vkontakte-9.jpg");
   background-size: cover;
   background-position: top;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center; /* Center vertically */
+  align-items: center;
 }
 
 .container {
-  margin-top: 50px; /* Adjust as needed */
+  margin-top: 50px;
 }
 
 .login-container {
@@ -19,13 +19,13 @@
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 .login-logo {
   display: block;
-  margin: 0 auto; /* Center the image horizontally */
+  margin: 0 auto;
   width: 150px;
   height: auto;
 }

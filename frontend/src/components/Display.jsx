@@ -7,31 +7,30 @@ import styles from "./Display.module.css";
 
 const Display = (props) => {
   const [employerId, setEmployerId] = useState("");
-  const [employerName, setEmployerName] = useState('');
+  const [employerName, setEmployerName] = useState("");
   const [description, setDescription] = useState("");
   const [position, setPosition] = useState("");
 
-
-  // const userCtx = useContext(UserContext);
   const queryClient = useQueryClient();
   const usingFetch = useFetch();
 
   // Get Employer Id
-  const {mutate,
+  const {
+    mutate,
     isSuccess: isEmployerSuccess,
     isError: isEmployerError,
     error: employerError,
     isFetching: isEmployerFetching,
     data: employerData,
-  } = useMutation({mutationFn: async () =>
-      await usingFetch(`/employers`, "POST", {email: props.email}),
+  } = useMutation({
+    mutationFn: async () =>
+      await usingFetch(`/employers`, "POST", { email: props.email }),
   });
 
-  useEffect(()=> {
+  useEffect(() => {
     mutate();
-  }, [])
+  }, []);
 
- 
   useEffect(() => {
     if (isEmployerSuccess && employerData) {
       setEmployerId(employerData._id);
@@ -90,10 +89,12 @@ const Display = (props) => {
       {isEmployerFetching && <h1>Loading...</h1>}
       {isEmployerError && <div>{employerError.message}</div>}
 
-      <img src='../../public/LinkedOut.png'/>
+      <img src="../../public/LinkedOut.png" />
 
       <div className={styles.banner}>
-        <div className={styles.bannerTitle}>{`${employerName}'s Dashboard`}</div>
+        <div
+          className={styles.bannerTitle}
+        >{`${employerName}'s Dashboard`}</div>
       </div>
 
       <div className={styles.inputContainer}>
@@ -117,7 +118,6 @@ const Display = (props) => {
 
         {isJobFetching && <h1>Loading...</h1>}
         {isJobError && <div>{jobError.message}</div>}
-        {/* {isJobSuccess && JSON.stringify(jobData)} */}
         {isJobSuccess &&
           jobData.map((item) => {
             return (
@@ -139,7 +139,6 @@ const Display = (props) => {
 
         {isTerminatedJobFetching && <h1>Loading...</h1>}
         {isTerminatedJobError && <div>{terminatedJobError.message}</div>}
-        {/* {isTerminatedJobSuccess && JSON.stringify(terminatedJobData)} */}
         {isTerminatedJobSuccess &&
           terminatedJobData.map((item, idx) => {
             return (

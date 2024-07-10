@@ -1,8 +1,9 @@
-// const JobList = require("../models/JobList");
+const mongoose = require("mongoose");
 const JobListModel = require("../models/Jobs");
-const Applicants = require("../models/Applicants")
-const Jobs = require("../models/Jobs")
-const Employers = require('../models/Employers')
+const Applicants = require("../models/Applicants");
+const Jobs = require("../models/Jobs");
+const Employers = require("../models/Employers");
+const Resumes = require("../models/Resumes");
 
 const seedJobs = async (req, res) => {
   try {
@@ -56,7 +57,7 @@ const seedJobs = async (req, res) => {
 
 const getAllActiveJobs = async (req, res) => {
   try {
-    const allJobs = await JobListModel.find({status: 'active'});
+    const allJobs = await JobListModel.find({ status: "active" });
     res.json(allJobs);
   } catch (error) {
     console.error(error.message);
@@ -66,9 +67,7 @@ const getAllActiveJobs = async (req, res) => {
 
 const getJobById = async (req, res) => {
   try {
-    // const book = await BooksModel.findById(req.body.id);
     const jobItem = await JobListModel.findOne({ _id: req.body.id });
-    // const book = await BooksModel.find({});
     res.json(jobItem);
   } catch (error) {
     console.error(error.message);
@@ -76,18 +75,18 @@ const getJobById = async (req, res) => {
   }
 };
 
-//9/7 - Added New Function for dashboard banner
+// Added New Function for dashboard banner
 const getApplicant = async (req, res) => {
   try {
-  const applicant = await Applicants.findOne({email: req.body.email})
-  res.json(applicant) }
-  catch (error) {
+    const applicant = await Applicants.findOne({ email: req.body.email });
+    res.json(applicant);
+  } catch (error) {
     console.error(error.message);
-    res.status(400).json({status: 'error', msg: 'error getting applicant'})
+    res.status(400).json({ status: "error", msg: "error getting applicant" });
   }
+};
 
-}
-
+// Added New Function to apply for joB
 const applyJob = async (req, res) => {
   try {
     const applicant = await Applicants.findById(req.body.applicantId);
@@ -99,12 +98,6 @@ const applyJob = async (req, res) => {
     console.log(job);
     job.applicants.push(req.body.applicantId);
     await job.save();
-
-    // await Resumes.create({
-    //   applicant: req.body.applicantId,
-    //   job: req.body.jobId,
-    //   document: req.body.resumeDocument,
-    // });
     res.status(200).json({ status: "ok", msg: "applied job" });
   } catch (error) {
     console.error(error.message);
@@ -114,20 +107,35 @@ const applyJob = async (req, res) => {
 
 const submitResume = async function (req, res) {
   try {
-    // IN REQ.FILES.”YOUR_FILE_NAME” WILL BE PRESENT
-    const file = req.files;
-    const bodyData = req.body;
-    // console.log(file);
-    // console.log(bodyData);
+    const { applicantId, document } = req.body;
+    const jobId = req.params.id;
+    await Resumes.create({
+      applicant: applicantId,
+      job: jobId,
+      document: document,
+    });
+    console.log("Resume received");
     res.status(200).send({
-      message: "FILE RECEIVED!",
+      message: "Resume Received",
     });
   } catch (error) {
-    res.send("File Upload Error");
+    res.send("Resume Submit Error");
   }
 };
 
+// Added new function to check if job has been applied for
 
+const checkAppliedJob = async (req, res) => {
+  try {
+    const job = await Jobs.findById(req.body.jobId);
+    if (job.applicants.includes(req.body.applicantId)) {
+      res.status(200).json("applied");
+    } else res.status(200).json("unapplied");
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({ status: "error", msg: "error checking job" });
+  }
+};
 
 module.exports = {
   seedJobs,
@@ -135,5 +143,6 @@ module.exports = {
   getJobById,
   submitResume,
   getApplicant,
-  applyJob
+  applyJob,
+  checkAppliedJob,
 };

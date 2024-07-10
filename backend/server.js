@@ -14,7 +14,7 @@ const connectDB = require("./src/db/db");
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 1000,
   standardHeaders: true,
   legacyHeaders: false,
 });
@@ -29,22 +29,12 @@ app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use(upload());
-
 app.use("/api", jobList);
 
 app.use("/employers", employers);
 app.use("/applicants", applicants);
 app.use("/roles", roles);
 app.use("/auth", auth);
-
-app.use((err, req, res, next) => {
-  if (err instanceof SyntaxError && err.status === 400 && "body" in err) {
-    console.error(err);
-    return res.status(400).send({ status: 404, msg: "An error has occurred" });
-  }
-  next();
-});
 
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {

@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const JobSchema = new mongoose.Schema(
   {
-    //below allows for termination
     status: { type: String, enum: ["active", "terminated"], default: "active" },
     position: { type: String, require: true, minLength: 1, maxLength: 50 },
     description: { type: String, require: true, minLength: 1, maxLength: 2000 },
