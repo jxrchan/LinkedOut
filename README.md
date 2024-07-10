@@ -22,4 +22,20 @@ Emma chose her role as a Job Seeker, fills in her email, and click Register.
 There will be a pop up box coming down which asks for password, name and description about yourself. You have completed your registration by clicking Register button again. Then, you can click Login Now! to go back to Log in Page which is the first image that we show you before.
 
 
+# Technologies Used
+* React.js
+* Node.js
+* Express.js
+* MongoDB
+* JWT (JSON Web Tokens)
+
+
+# Next Steps
+* Receving notifications about new job postings that match Job Seeker's criteria.
+* Create and edit Job Seeker's profile with personal details, skills, experiences, and education.
+* Search for jobs easily using filters such aslocation, industry, job title, experience level, and salary range.
+* Create and manage the company profile, showcasing company culture and benefits.
+
+
+
 
