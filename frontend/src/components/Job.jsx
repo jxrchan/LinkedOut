@@ -35,65 +35,62 @@ const Job = (props) => {
   });
 
   return (
-
     <>
-    
+      <div className={styles.jobContainer}>
+        {showApplicantsModal && (
+          <ApplicantsModal
+            jobId={props.id}
+            applicants={data}
+            setShowApplicantsModal={setShowApplicantsModal}
+          />
+        )}
+        {showUpdateModal && (
+          <UpdateModal
+            id={props.id}
+            position={props.position}
+            description={props.description}
+            setShowUpdateModal={setShowUpdateModal}
+          />
+        )}
 
-    <div className={styles.jobContainer}>
-      {showApplicantsModal && (
-        <ApplicantsModal
-          jobId={props.id}
-          applicants={data}
-          setShowApplicantsModal={setShowApplicantsModal}
-        />
-      )}
-      {showUpdateModal && (
-        <UpdateModal
-          id={props.id}
-          position={props.position}
-          description={props.description}
-          setShowUpdateModal={setShowUpdateModal}
-        />
-      )}
+        <div className={styles.jobDetails}>
+          <div className={styles.jobPosition}>{props.position}</div>
+          <div className={styles.jobDescription}>{props.description}</div>
+          <div className={styles.jobActions}>
+            {isFetching && <span>Loading...</span>}
+            {isError && <div>{error.message}</div>}
+            {isSuccess && (
+              <button
+                className={styles.jobActionBtn}
+                onClick={() => setShowApplicantsModal(true)}
+              >
+                See {props.applicants.length} applicants
+              </button>
+            )}
 
-      <div className={styles.jobDetails}>
-        <div className={styles.jobPosition}>{props.position}</div>
-        <div className={styles.jobDescription}>{props.description}</div>
-        <div className={styles.jobActions}>
-          {isFetching && <span>Loading...</span>}
-          {isError && <div>{error.message}</div>}
-          {isSuccess && (
             <button
               className={styles.jobActionBtn}
-              onClick={() => setShowApplicantsModal(true)}
+              onClick={() => setShowUpdateModal(true)}
             >
-              See {props.applicants.length} applicants
+              Update
             </button>
-          )}
 
-          <button
-            className={styles.jobActionBtn}
-            onClick={() => setShowUpdateModal(true)}
-          >
-            Update
-          </button>
+            <button
+              className={styles.jobActionBtn}
+              onClick={deleteListing.mutate}
+            >
+              Delete
+            </button>
 
-          <button
-            className={styles.jobActionBtn}
-            onClick={deleteListing.mutate}
-          >
-            Delete
-          </button>
-
-          <button
-            className={styles.jobActionBtn}
-            onClick={terminateListing.mutate}
-          >
-            Remove Listing
-          </button>
+            <button
+              className={styles.jobActionBtn}
+              onClick={terminateListing.mutate}
+            >
+              Remove Listing
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

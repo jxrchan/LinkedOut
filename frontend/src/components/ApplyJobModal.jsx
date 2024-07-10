@@ -25,18 +25,9 @@ const OverLay = (props) => {
     },
   });
 
-  // const { mutate: submitResume } = useMutation({
-  //   mutationFn: async () =>
-  //     await usingFetch("/api/jobs/resume/" + props.id, "POST", formData),
-  //   onSuccess: () => {
-  //     queryClient.invalidateQueries(["jobs"]);
-  //   },
-  // });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  
     try {
       console.log(resumeText);
 
@@ -50,14 +41,14 @@ const OverLay = (props) => {
           document: resumeText,
         }
       );
-  
+
       console.log(response.data);
-  
-      queryClient.invalidateQueries('applied status', props.jobId);
+
+      queryClient.invalidateQueries("applied status", props.jobId);
     } catch (error) {
       console.error("There was an error submitting the resume:", error);
     }
-  
+
     props.setShowApplyJobModal(false);
   };
 
@@ -86,10 +77,6 @@ const OverLay = (props) => {
           </div>
         </div>
         <div className={styles.row}>
-          {/* <button className="col-md-3" onClick={callUpdateBook}>
-            update
-          </button> */}
-
           <form onSubmit={handleSubmit}>
             <textarea
               value={resumeText}

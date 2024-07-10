@@ -59,7 +59,6 @@ const JobListForApp = (props) => {
         >
           {props.title}
         </div>
-        {/* <div>{props.jobDes}</div> */}
         {console.log(checkAppliedJob)}
         {checkAppliedJob === "unapplied" && (
           <button
