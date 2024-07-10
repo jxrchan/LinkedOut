@@ -46,11 +46,13 @@ Clicking "Apply" button shows a pop-up Box, displaying detailed information such
 <img width="986" alt="Screenshot 2024-07-10 at 3 09 19 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/ad1d7435-455a-4d85-acf6-9f3f08e57f84">
 
 Post a Job: Employers can create new job postings by filling in details such as job position and job description and any other relevant details about the position.
+
 Active Job Listings: Shows all current job postings that are actively receiving applications.
 * Number of Applicants: Indicates how many candidates have applied for each job.
 * Update: Allows employers to edit the job posting details.
 * Delete: Enables employers to completely remove a job posting immediately.
 * Remove: Terminates the job posting so that it is no longer active and stops accepting new applicants.
+
 Terminated Job Listings: Displays job postings that have been terminated or removed by the employer. This section helps employers keep track of past postings.
 
 <img width="1067" alt="Screenshot 2024-07-10 at 3 01 23 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/b4c06745-a67a-447b-aa36-988256cc8246">
