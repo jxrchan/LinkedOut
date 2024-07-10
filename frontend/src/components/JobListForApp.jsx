@@ -19,7 +19,7 @@ const JobListForApp = (props) => {
   });
 
   const fetchEmployerData = useQuery({
-    queryKey: ["employer"],
+    queryKey: ["employer", props.employerId],
     queryFn: async () =>
       await usingFetch("/employers", "POST", { id: props.employerId }),
   });

@@ -20,9 +20,6 @@ const OverLay = (props) => {
         applicantId: props.applicantId,
         jobId: props.jobId,
       }),
-    onSuccess: () => {
-      queryClient.invalidateQueries(["jobs"]);
-    },
   });
 
   const handleSubmit = async (e) => {
