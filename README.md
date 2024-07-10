@@ -65,8 +65,8 @@ Clicking "Update" button shows this image where you can edit job position and de
 
 Clicking "see() applicants" shows this image where you can see the name of applicants. There you can click applicant's name, for example, "seeker" to see his resume.
 
-<img width="1173" alt="Screenshot 2024-07-10 at 3 22 51 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/3fd099ab-22b4-43e6-9fa0-158ac56da875">
-<img width="1172" alt="Screenshot 2024-07-10 at 3 23 13 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/f4dd5dae-0173-4d48-95f9-c466585f3184">
+<img width="1382" alt="Screenshot 2024-07-10 at 4 40 32 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/38718eb2-d967-4282-979f-6a29bd9eef62">
+
 This is seeker's full resume. You can click "cancel" button to go back to the image before.
 
 
