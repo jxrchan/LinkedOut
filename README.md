@@ -7,6 +7,7 @@ Linkedout is a job portal application built using the MERN stack (MongoDB, Expre
 For project planning and progress, visit our public board [here](https://trello.com/b/jukg9IGY/project-3)
 
 # Features
+## Login And Register
 
 <img width="1419" alt="Screenshot 2024-07-10 at 11 15 54 AM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/421b4584-834c-43f1-ad91-8b4fe8164a01">
 This is our main page. If you don't have an account, you can sign up first by clicking "Register" button.
@@ -21,6 +22,7 @@ Emma chooses her role as a Job Seeker, fills in her email, and click "Register" 
 
 There will be a pop up box coming down which asks for password, name and description about yourself. You have completed your registration by clicking "Register" button again. Then, you can click "Login Now!" to go back to Log in Page which is the first image that we show you before.
 
+## Job Seeker's Dashboard
 
 image
 
@@ -36,6 +38,8 @@ Pop-up Box: A pop-up box appears, displaying detailed information such as
 * Resume Submission box: Job Seeker fills out their related work experience, education, name, and contact.
  Then, you can just click "Submit Resume" to submit your resume to a company or "Cancel" if you want to go back to your Dashboard.
 
+
+## Employer's Dashboard
 image
 
 Post a Job: Employers can create new job postings by filling in details such as job position and job description and any other relevant details about the position.
