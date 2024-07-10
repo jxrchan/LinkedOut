@@ -8,7 +8,7 @@ const validateIdInParam = [param("id", "id is required in param").isMongoId()];
 
 const validateGetEmployer = [
   body("email", "email is required in body").optional().notEmpty(),
-  body("id", "id is required").optional().notEmpty().isMongoId()
+  body("id", "id is required").optional().notEmpty().isMongoId(),
 ];
 
 const validateCreateJobData = [
@@ -48,7 +48,6 @@ const validatePostEmployerData = [
   ),
   body("logo", "logo is required").optional().notEmpty(),
   body("email", "email is required").isEmail(),
-  // body('hash',"hash is required").isJWT(),
 ];
 
 module.exports = {

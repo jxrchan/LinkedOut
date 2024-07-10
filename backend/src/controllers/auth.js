@@ -19,7 +19,6 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-//8/7 shorten register function
 const checkValidEmail = async (req, res) => {
   try {
     const auth = await AuthModel.findOne({ email: req.body.email });
@@ -33,7 +32,6 @@ const checkValidEmail = async (req, res) => {
   }
 };
 
-//8/7 - new function
 const register = async (req, res) => {
   try {
     const hash = await bcrypt.hash(req.body.password, 12);

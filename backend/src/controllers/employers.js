@@ -27,31 +27,6 @@ const seedApplicants = async (req, res) => {
   }
 };
 
-// Applying Jobs for Applicants
-// const applyJob = async (req, res) => {
-//   try {
-//     const applicant = await Applicants.findById(req.body.applicantId);
-//     console.log(applicant);
-//     applicant.jobs_applied.push(req.body.jobId);
-//     await applicant.save();
-
-//     const job = await Jobs.findById(req.body.jobId);
-//     console.log(job);
-//     job.applicants.push(req.body.applicantId);
-//     await job.save();
-
-//     await Resumes.create({
-//       applicant: req.body.applicantId,
-//       job: req.body.jobId,
-//       document: req.body.resumeDocument,
-//     });
-//     res.status(200).json({ status: "ok", msg: "applied job" });
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(400).json({ status: "error", msg: "error applying for job" });
-//   }
-// };
-
 // Seeding Employers
 const seedEmployers = async (req, res) => {
   try {
@@ -132,10 +107,12 @@ const updateEmployerDetails = async (req, res) => {
 
 const getOneEmployer = async (req, res) => {
   try {
-    if (req.body.email) {const employer = await Employers.findOne({ email: req.body.email });
-    res.json(employer);}
-    else if (req.body.id) {const employer = await Employers.findById(req.body.id);
-      res.json(employer)
+    if (req.body.email) {
+      const employer = await Employers.findOne({ email: req.body.email });
+      res.json(employer);
+    } else if (req.body.id) {
+      const employer = await Employers.findById(req.body.id);
+      res.json(employer);
     }
   } catch (error) {
     console.error(error.message);
@@ -277,7 +254,6 @@ module.exports = {
   updateEmployerDetails,
   getEmployerAllActiveJobs,
   getEmployerAllTerminatedJobs,
-  // getEmployerOneJob,
   updateJob,
   deleteJob,
   createJob,
