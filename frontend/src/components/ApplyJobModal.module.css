@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .modal {
@@ -59,7 +60,6 @@
   background-color: #c82333;
 }
 
-/* Container for the form */
 .formcontainer {
   display: flex;
   flex-direction: column;
@@ -74,7 +74,6 @@
   margin: 20px auto;
 }
 
-/* Styling the textarea */
 textarea {
   width: 200%;
   height: 150px;
@@ -90,14 +89,12 @@ textarea {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-/* Textarea focus state */
 textarea:focus {
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
 }
 
-/* Submit button styling */
 button {
   margin-top: 15px;
   padding: 10px 20px;
@@ -110,7 +107,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-/* Button hover state */
 button:hover {
   background-color: #0056b3;
 }
