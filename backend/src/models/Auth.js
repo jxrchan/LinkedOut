@@ -4,7 +4,7 @@ const AuthSchema = new mongoose.Schema(
   {
     email: { type: String, require: true },
     hash: { type: String, require: true },
-    role: { type: String, require: true, default: "user" },
+    role: { type: String, require: true, default: "Job Seeker" },
     created_at: { type: Date, default: Date.now },
   },
   { collection: "auth" }
