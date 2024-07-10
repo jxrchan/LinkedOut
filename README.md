@@ -1,4 +1,3 @@
-<img width="1437" alt="Screenshot 2024-07-10 at 11 11 59 AM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/9510d5f2-796e-42c5-a3f0-01fdac047b39"><img width="1419" alt="Screenshot 2024-07-10 at 11 22 09 AM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/b9ec4382-1637-403f-8742-bf50474f477c"><img width="1437" alt="Screenshot 2024-07-10 at 11 11 59 AM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/09270851-d7b1-4ae5-b7ca-9ecfc2225844">
 ![LinkedOut](https://github.com/jxrchan/LinkedOut/assets/169599607/30a196d2-7168-48a5-8c48-24bc4dc63bdc)
 <h1 align="center">LinkedOut Job Portal</h1>
 
