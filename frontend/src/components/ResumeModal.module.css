@@ -1,43 +1,76 @@
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.7);
-  }
-  
-  .modal {
-    position: fixed;
-    background: white;
-    top: 30vh;
-    bottom: 30vh;
-    left: 10%;
-    width: 80%;
-    z-index: 200;
-    overflow: scroll;
-  }
-  
-  button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  button.cancel {
-    background-color: #ccc;
-    color: #333;
-  }
-  
-  button.cancel:hover {
-    background-color: #aaa;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+  position: fixed;
+  background: white;
+  top: 30vh;
+  bottom: 30vh;
+  left: 10%;
+  width: 80%;
+  z-index: 200;
+  overflow: scroll;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button.cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+button.cancel:hover {
+  background-color: #aaa;
+}
+
+.resumeContent {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.resumeContent h1,
+.resumeContent h2,
+.resumeContent h3 {
+  margin: 0.5rem 0;
+}
+
+.resumeContent p {
+  margin: 0.5rem 0;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.cancelButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancelButton:hover {
+  background-color: #0056b3;
+}
