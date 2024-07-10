@@ -41,7 +41,8 @@ Clicking "Apply" button shows a pop-up Box, displaying detailed information such
 
 
 ## Employer's Dashboard
-image
+<img width="1020" alt="Screenshot 2024-07-10 at 2 58 47 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/0d9d2da3-a8f7-4584-ae75-c75247fc6f95">
+<img width="843" alt="Screenshot 2024-07-10 at 2 59 02 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/ed52760d-f94f-447d-9cf7-1adff31e8cef">
 
 Post a Job: Employers can create new job postings by filling in details such as job position and job description and any other relevant details about the position.
 Active Job Listings: Shows all current job postings that are actively receiving applications.
@@ -50,6 +51,14 @@ Active Job Listings: Shows all current job postings that are actively receiving 
 * Delete: Enables employers to completely remove a job posting immediately.
 * Remove: Terminates the job posting so that it is no longer active and stops accepting new applicants.
 Terminated Job Listings: Displays job postings that have been terminated or removed by the employer. This section helps employers keep track of past postings.
+
+<img width="1067" alt="Screenshot 2024-07-10 at 3 01 23 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/b4c06745-a67a-447b-aa36-988256cc8246">
+Clicking "Update" button shows this image where you can edit job position and description.
+
+
+<img width="775" alt="Screenshot 2024-07-10 at 3 01 33 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/026eed9f-91ef-495b-84ff-8f8ecaea568b">
+Clicking "see() applicants" shows this image where you can see the name of applicants. There you can click applicant's name, for example, "Joshua Chan" to see his resume.
+
 
 
 # Technologies Used
