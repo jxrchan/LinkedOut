@@ -1,8 +1,9 @@
 // const JobList = require("../models/JobList");
 const JobListModel = require("../models/Jobs");
-const Applicants = require("../models/Applicants")
-const Jobs = require("../models/Jobs")
-const Employers = require('../models/Employers')
+const Applicants = require("../models/Applicants");
+const Jobs = require("../models/Jobs");
+const Employers = require("../models/Employers");
+const Resumes = require("../models/Resumes");
 
 const seedJobs = async (req, res) => {
   try {
@@ -56,7 +57,7 @@ const seedJobs = async (req, res) => {
 
 const getAllActiveJobs = async (req, res) => {
   try {
-    const allJobs = await JobListModel.find({status: 'active'});
+    const allJobs = await JobListModel.find({ status: "active" });
     res.json(allJobs);
   } catch (error) {
     console.error(error.message);
@@ -79,14 +80,13 @@ const getJobById = async (req, res) => {
 //9/7 - Added New Function for dashboard banner
 const getApplicant = async (req, res) => {
   try {
-  const applicant = await Applicants.findOne({email: req.body.email})
-  res.json(applicant) }
-  catch (error) {
+    const applicant = await Applicants.findOne({ email: req.body.email });
+    res.json(applicant);
+  } catch (error) {
     console.error(error.message);
-    res.status(400).json({status: 'error', msg: 'error getting applicant'})
+    res.status(400).json({ status: "error", msg: "error getting applicant" });
   }
-
-}
+};
 
 const applyJob = async (req, res) => {
   try {
@@ -114,20 +114,21 @@ const applyJob = async (req, res) => {
 
 const submitResume = async function (req, res) {
   try {
-    // IN REQ.FILES.”YOUR_FILE_NAME” WILL BE PRESENT
-    const file = req.files;
-    const bodyData = req.body;
-    // console.log(file);
-    // console.log(bodyData);
+    const { applicantId, document } = req.body;
+    const jobId = req.params.id;
+    await Resumes.create({
+      applicant: applicantId,
+      job: jobId,
+      document: document,
+    });
+    console.log("Resume received");
     res.status(200).send({
-      message: "FILE RECEIVED!",
+      message: "Resume Received",
     });
   } catch (error) {
-    res.send("File Upload Error");
+    res.send("Resume Submit Error");
   }
 };
-
-
 
 module.exports = {
   seedJobs,
@@ -135,5 +136,5 @@ module.exports = {
   getJobById,
   submitResume,
   getApplicant,
-  applyJob
+  applyJob,
 };

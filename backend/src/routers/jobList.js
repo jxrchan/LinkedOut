@@ -7,7 +7,7 @@ const {
   getAllActiveJobs,
   submitResume,
   getApplicant,
-  applyJob
+  applyJob,
 } = require("../controllers/jobList");
 
 const {
@@ -20,11 +20,11 @@ const checkErrors = require("../validators/checkErrors");
 const { authAdmin, auth } = require("../middleware/auth");
 
 router.get("/jobs/seed", seedJobs);
-router.post("/applicant", getApplicant)
+router.post("/applicant", getApplicant);
 
 router.get("/jobs", getAllActiveJobs);
 router.post("/jobs", getJobById);
-router.post("/jobs/apply", applyJob)
+router.post("/jobs/apply", applyJob);
 router.post("/jobs/resume/:id", submitResume);
 
 module.exports = router;
