@@ -15,11 +15,11 @@ This is our main page. If you don't have an account, you can sign up first by cl
 Here, you can select your role !
 
 <img width="1437" alt="Screenshot 2024-07-10 at 11 11 59 AM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/31dd2cf7-16fe-4aa1-a295-dfbd07a99cf4">
-Emma chose her role as a Job Seeker and fills in her email.
+Emma chose her role as a Job Seeker, fills in her email, and click Register.
 
 <img width="821" alt="Screenshot 2024-07-10 at 11 15 08 AM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/13c6c7e1-ca9e-4495-9d31-949ae69d3e92">
 
-After clicking register, there will be a pop up box coming down which asks for password, name and description about yourself. You have completed your registration by clicking Register button. Then, you can click Login Now! to go back to Log in Page which is the first image that we show you before.
+There will be a pop up box coming down which asks for password, name and description about yourself. You have completed your registration by clicking Register button again. Then, you can click Login Now! to go back to Log in Page which is the first image that we show you before.
 
 
 
