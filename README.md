@@ -23,13 +23,12 @@ Emma chooses her role as a Job Seeker, fills in her email, and click "Register" 
 There will be a pop up box coming down which asks for password, name and description about yourself. You have completed your registration by clicking "Register" button again. Then, you can click "Login Now!" to go back to Log in Page which is the first image that we show you before.
 
 ## Job Seeker's Dashboard
+<img width="1347" alt="Screenshot 2024-07-10 at 4 42 56 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/7e8ad22e-c429-4d37-b74b-9f63444cdd16">
 
-<img width="1253" alt="Screenshot 2024-07-10 at 3 19 07 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/c051dc80-f048-42dc-89d9-5b9bcb206e2d">
-
-After logging in as a ***Job Seeker***, for example, you can see ***seeker***'s Dashboard. There is a list of jobs posted by different companies. 
+After logging in as a ***Job Seeker***, for example, you can see ***John Doe***'s Dashboard. There is a list of jobs posted by different companies. 
 When a job seeker finds a job they're interested in, they click on the "Apply" button associated with that job listing. Grey colour "Apply" button is the job you have already applied.
 
-<img width="753" alt="Screenshot 2024-07-10 at 3 19 18 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/6f800f26-5e01-4797-84ec-fc06037f6bda">
+<img width="843" alt="Screenshot 2024-07-10 at 4 42 27 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/75b937b8-cd2e-40e9-81ee-8977fa855ece">
 
 Clicking "Apply" button shows a pop-up Box, displaying detailed information such as 
 * ***Job Title***: Clearly states the position being applied for.
@@ -60,14 +59,13 @@ You can also register and log in as a ***Employer***. This is ***General Disasse
 <img width="1067" alt="Screenshot 2024-07-10 at 3 01 23 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/b4c06745-a67a-447b-aa36-988256cc8246">
 Clicking "Update" button shows this image where you can edit job position and description.
 
+<img width="698" alt="Screenshot 2024-07-10 at 4 45 53 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/45b8ed66-8279-4e13-9954-008ad570e1b1">
 
-<img width="775" alt="Screenshot 2024-07-10 at 3 01 33 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/026eed9f-91ef-495b-84ff-8f8ecaea568b">
-
-Clicking "see() applicants" shows this image where you can see the name of applicants. There you can click applicant's name, for example, "seeker" to see his resume.
+Clicking "see applicants" shows this image where you can see the name of applicants. There you can click applicant's name, for example, "seeker" to see his resume.
 
 <img width="1382" alt="Screenshot 2024-07-10 at 4 40 32 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/38718eb2-d967-4282-979f-6a29bd9eef62">
 
-This is seeker's full resume. You can click "cancel" button to go back to the image before.
+This is John Doe's full resume. You can click "cancel" button to go back to the image before.
 
 
 # Technologies Used
