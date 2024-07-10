@@ -40,9 +40,9 @@ Clicking "Apply" button shows a pop-up Box, displaying detailed information such
 
 
 ## Employer's Dashboard
-<img width="986" alt="Screenshot 2024-07-10 at 3 08 54 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/9d92f25a-bc89-427a-a8b9-da814e946d73">
+<img width="951" alt="Screenshot 2024-07-10 at 4 37 51 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/9b2c6ed1-9972-4fdc-8fb3-86b1e807a7ea">
 
-<img width="986" alt="Screenshot 2024-07-10 at 3 09 19 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/ad1d7435-455a-4d85-acf6-9f3f08e57f84">
+<img width="958" alt="Screenshot 2024-07-10 at 4 39 38 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/c573cf4f-bd7e-4f77-a9f8-5cbfffb03375">
 
 You can also register and log in as a ***Employer***. This is ***General Disassembly***'s Dashboard.
 
@@ -56,7 +56,8 @@ You can also register and log in as a ***Employer***. This is ***General Disasse
 
 ***Terminated Job Listings***: Displays job postings that have been terminated or removed by the employer. This section helps employers keep track of past postings.
 
-<img width="1067" alt="Screenshot 2024-07-10 at 3 01 23 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/b4c06745-a67a-447b-aa36-988256cc8246">
+<img width="1243" alt="Screenshot 2024-07-10 at 4 48 36 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/5d586d97-9e00-40b6-8311-8b5a4d6debd9">
+
 Clicking "Update" button shows this image where you can edit job position and description.
 
 <img width="698" alt="Screenshot 2024-07-10 at 4 45 53 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/45b8ed66-8279-4e13-9954-008ad570e1b1">
