@@ -26,10 +26,7 @@ const OverLay = (props) => {
     e.preventDefault();
 
     try {
-      console.log(resumeText);
-
       applyJob();
-
       const response = await usingFetch(
         "/api/jobs/resume/" + props.jobId,
         "POST",
@@ -38,9 +35,8 @@ const OverLay = (props) => {
           document: resumeText,
         }
       );
-
       console.log(response.data);
-
+      queryClient.invalidateQueries("jobs");
       queryClient.invalidateQueries("applied status", props.jobId);
     } catch (error) {
       console.error("There was an error submitting the resume:", error);
