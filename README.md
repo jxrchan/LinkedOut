@@ -45,6 +45,8 @@ Clicking "Apply" button shows a pop-up Box, displaying detailed information such
 
 <img width="986" alt="Screenshot 2024-07-10 at 3 09 19 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/ad1d7435-455a-4d85-acf6-9f3f08e57f84">
 
+You can also register and log in as a Employer. This is General Disassembly's Dashboard.
+
 ***Post a Job***:Employers can create new job postings by filling in details such as job position and job description and any other relevant details about the position.
 
 ***Active Job Listings***: Shows all current job postings that are actively receiving applications.
