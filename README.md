@@ -41,8 +41,9 @@ Clicking "Apply" button shows a pop-up Box, displaying detailed information such
 
 
 ## Employer's Dashboard
-<img width="1020" alt="Screenshot 2024-07-10 at 2 58 47 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/0d9d2da3-a8f7-4584-ae75-c75247fc6f95">
-<img width="843" alt="Screenshot 2024-07-10 at 2 59 02 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/ed52760d-f94f-447d-9cf7-1adff31e8cef">
+<img width="986" alt="Screenshot 2024-07-10 at 3 08 54 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/9d92f25a-bc89-427a-a8b9-da814e946d73">
+
+<img width="986" alt="Screenshot 2024-07-10 at 3 09 19 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/ad1d7435-455a-4d85-acf6-9f3f08e57f84">
 
 Post a Job: Employers can create new job postings by filling in details such as job position and job description and any other relevant details about the position.
 Active Job Listings: Shows all current job postings that are actively receiving applications.
