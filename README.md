@@ -18,7 +18,8 @@ Here, you can select your role !
 Emma chose her role as a Job Seeker and fills in her email.
 
 <img width="821" alt="Screenshot 2024-07-10 at 11 15 08 AM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/13c6c7e1-ca9e-4495-9d31-949ae69d3e92">
-After clicking register, there will be a pop up box coming down which asks for password, name and description about yourself. You have completed your registration by clicking Register button. Then, you can click Login Now! to go back to Log in Page.
+
+After clicking register, there will be a pop up box coming down which asks for password, name and description about yourself. You have completed your registration by clicking Register button. Then, you can click Login Now! to go back to Log in Page which is the first image that we show you before.
 
 
 
