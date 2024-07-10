@@ -32,7 +32,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-.job-item button {
+.button-unapplied {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
@@ -43,8 +43,25 @@ h1 {
   transition: background-color 0.3s ease;
 }
 
-.job-item button:hover {
+
+
+.button-unapplied:hover {
   background-color: #0056b3;
+}
+
+.button-applied {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  background-color: #C0C0C0;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease
+}
+
+.button-applied:hover {
+  background-color: #C0C0C0;
 }
 
 .banner {

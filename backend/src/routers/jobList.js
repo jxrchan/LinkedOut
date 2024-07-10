@@ -7,7 +7,8 @@ const {
   getAllActiveJobs,
   submitResume,
   getApplicant,
-  applyJob
+  applyJob,
+  checkAppliedJob
 } = require("../controllers/jobList");
 
 const {
@@ -24,6 +25,7 @@ router.post("/applicant", getApplicant)
 
 router.get("/jobs", getAllActiveJobs);
 router.post("/jobs", getJobById);
+router.post("/applied-jobs", checkAppliedJob)
 router.post("/jobs/apply", applyJob)
 router.post("/jobs/resume/:id", submitResume);
 
