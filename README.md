@@ -62,7 +62,7 @@ Clicking "Update" button shows this image where you can edit job position and de
 
 <img width="698" alt="Screenshot 2024-07-10 at 4 45 53 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/45b8ed66-8279-4e13-9954-008ad570e1b1">
 
-Clicking "see applicants" shows this image where you can see the name of applicants. There you can click applicant's name, for example, "seeker" to see his resume.
+Clicking "see applicants" shows this image where you can see the name of applicants. There you can click applicant's name, for example, "John Doe" to see his resume.
 
 <img width="1382" alt="Screenshot 2024-07-10 at 4 40 32 PM" src="https://github.com/jxrchan/LinkedOut/assets/169599607/38718eb2-d967-4282-979f-6a29bd9eef62">
 
