@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import ProfileModal from "./ProfileModal";
+import "./Registration.css";
 
 const Registration = (props) => {
   const usingFetch = useFetch();
@@ -30,11 +31,11 @@ const Registration = (props) => {
           setShowProfileModal={setShowProfileModal}
         />
       )}
-      <body className="register-body">
-        <div className="container registration-container">
-          <h2 className="text-center">Sign Up</h2>
+      <div className="register-body">
+        <div className="registration-container">
+          <h2 className="text-center">Sign Up Form</h2>
           <div className="form-group">
-            <label htmlFor="roles">Register as</label>
+            <div>Register as</div>
             <select
               name="roles"
               id="roles"
@@ -52,7 +53,7 @@ const Registration = (props) => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <div>Email</div>
             <input
               className="form-control"
               placeholder="hello@gmail.com"
@@ -78,7 +79,7 @@ const Registration = (props) => {
             </button>
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 };

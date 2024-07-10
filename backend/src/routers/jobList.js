@@ -21,7 +21,7 @@ const checkErrors = require("../validators/checkErrors");
 const { authAdmin, auth } = require("../middleware/auth");
 
 router.get("/jobs/seed", seedJobs);
-router.post("/applicant", getApplicant)
+router.post("/applicant", getApplicant);
 
 router.get("/jobs", getAllActiveJobs);
 router.post("/jobs", getJobById);

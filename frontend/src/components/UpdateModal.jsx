@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import styles from "./Modal.module.css";
+import styles from "./UpdateModal.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
-
 
 const OverLay = (props) => {
   const usingFetch = useFetch();
@@ -13,14 +12,11 @@ const OverLay = (props) => {
 
   const updateJob = useMutation({
     mutationFn: async () =>
-      await usingFetch(
-        "/employers/jobs",
-        "PATCH",
-        {position,
+      await usingFetch("/employers/jobs", "PATCH", {
+        position,
         description,
         id: props.id,
-        },
-      ),
+      }),
     onSuccess: () => {
       queryClient.invalidateQueries(["active jobs"]);
       props.setShowUpdateModal(false);
