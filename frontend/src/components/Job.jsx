@@ -4,8 +4,10 @@ import ApplicantsModal from "./ApplicantsModal";
 import UpdateModal from "./UpdateModal";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
+import UserContext from "../context/user"
 
 const Job = (props) => {
+  const userCtx = useContext(UserContext);
   const usingFetch = useFetch();
   const queryClient = useQueryClient();
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -14,12 +16,12 @@ const Job = (props) => {
   const { isSuccess, isError, error, isFetching, data } = useQuery({
     queryKey: ["active job applicants", props.id],
     queryFn: async () =>
-      await usingFetch(`/employers/job/${props.id}`, undefined, undefined),
+      await usingFetch(`/employers/job/${props.id}`, undefined, undefined, userCtx.accessToken),
   });
 
   const deleteListing = useMutation({
     mutationFn: async () =>
-      usingFetch("/employers/jobs/" + props.id, "DELETE", undefined),
+      usingFetch("/employers/jobs/" + props.id, "DELETE", undefined, userCtx.accessToken),
     onSuccess: () => {
       queryClient.invalidateQueries(["active jobs"]);
     },
@@ -27,7 +29,7 @@ const Job = (props) => {
 
   const terminateListing = useMutation({
     mutationFn: async () =>
-      usingFetch("/employers/terminate-job/" + props.id, "PATCH", undefined),
+      usingFetch("/employers/terminate-job/" + props.id, "PATCH", undefined, userCtx.accessToken),
     onSuccess: () => {
       queryClient.invalidateQueries(["active jobs"]);
       queryClient.invalidateQueries(["terminated jobs"]);

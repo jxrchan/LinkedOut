@@ -24,44 +24,55 @@ const {
   validateGetEmployer,
 } = require("../validators/employers");
 const { validateGetResumeData } = require("../validators/applicants");
+const { auth } = require("../middleware/auth");
 
 router.post("/seed", seedEmployers);
 
 //Profile Functions
 router.post(
   "/profile",
+  auth,
   validatePostEmployerData,
   checkErrors,
   postEmployerDetails
 );
-router.get("/profile/:id", validateIdInParam, checkErrors, getEmployerDetails);
+router.get(
+  "/profile/:id",
+  auth,
+  validateIdInParam,
+  checkErrors,
+  getEmployerDetails
+);
 router.patch(
   "/profile/:id",
+  auth,
   validateIdInParam,
   checkErrors,
   updateEmployerDetails
 );
 
-router.post("", validateGetEmployer, checkErrors, getOneEmployer);
+router.post("", auth, validateGetEmployer, checkErrors, getOneEmployer);
 
 //Job Dashboard Functions
 
 router.get(
   "/jobs/:id",
+  auth,
   validateIdInParam,
   checkErrors,
   getEmployerAllActiveJobs
 );
 router.get(
   "/terminated-jobs/:id",
+  auth,
   validateIdInParam,
   getEmployerAllTerminatedJobs
 );
 // router.get("/jobs/:id", validateIdInParam, checkErrors, getEmployerOneJob);
-router.put("/jobs", validateCreateJobData, checkErrors, createJob);
+router.put("/jobs", auth, validateCreateJobData, checkErrors, createJob);
 
-router.delete("/jobs/:id", validateIdInParam, checkErrors, deleteJob);
-router.patch("/jobs", validateUpdateJobData, checkErrors, updateJob);
+router.delete("/jobs/:id", auth, validateIdInParam, checkErrors, deleteJob);
+router.patch("/jobs", auth, validateUpdateJobData, checkErrors, updateJob);
 router.patch(
   "/terminate-job/:id",
   validateIdInParam,
@@ -70,9 +81,10 @@ router.patch(
 );
 
 //Applicant Functions
-router.get("/job/:id", validateIdInParam, checkErrors, getApplicants);
+router.get("/job/:id", auth, validateIdInParam, checkErrors, getApplicants);
 router.get(
   "/job/:applicantId/:jobId",
+  auth,
   validateGetResumeData,
   checkErrors,
   getOneApplicantResume

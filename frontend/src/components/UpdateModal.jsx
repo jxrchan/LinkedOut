@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import styles from "./UpdateModal.module.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
+import UserContext from "../context/user"
 
 const OverLay = (props) => {
+  const userCtx = useContext(UserContext)
   const usingFetch = useFetch();
   const queryClient = useQueryClient();
   const [position, setPosition] = useState(props.position);
@@ -16,7 +18,7 @@ const OverLay = (props) => {
         position,
         description,
         id: props.id,
-      }),
+      }, userCtx.accessToken),
     onSuccess: () => {
       queryClient.invalidateQueries(["active jobs"]);
       props.setShowUpdateModal(false);

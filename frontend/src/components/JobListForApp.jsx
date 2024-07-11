@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ApplyJobModal from "./ApplyJobModal";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
 import styles from "./JobListForApp.module.css";
+import UserContext from "../context/user";
 
 const JobListForApp = (props) => {
+  const userCtx = useContext(UserContext);
   const usingFetch = useFetch();
   const [showApplyJobModal, setShowApplyJobModal] = useState(false);
   const [checkAppliedJob, setCheckAppliedJob] = useState("unapplied");
@@ -12,16 +14,26 @@ const JobListForApp = (props) => {
   const fetchCheckAppliedJob = useQuery({
     queryKey: ["applied status", props.jobId],
     queryFn: async () =>
-      await usingFetch("/api/applied-jobs", "POST", {
-        jobId: props.jobId,
-        applicantId: props.applicantId,
-      }),
+      await usingFetch(
+        "/api/applied-jobs",
+        "POST",
+        {
+          jobId: props.jobId,
+          applicantId: props.applicantId,
+        },
+        userCtx.accessToken
+      ),
   });
 
   const fetchEmployerData = useQuery({
     queryKey: ["employer", props.employerId],
     queryFn: async () =>
-      await usingFetch("/employers", "POST", { id: props.employerId }),
+      await usingFetch(
+        "/employers",
+        "POST",
+        { id: props.employerId },
+        userCtx.accessToken
+      ),
   });
 
   useEffect(() => {

@@ -11,7 +11,7 @@ const Applicant = (props) => {
   const usingFetch = useFetch();
 
   const [applicantName, setApplicantName] = useState("");
-  const [applicantId, setApplicantId] = useState("")
+  const [applicantId, setApplicantId] = useState("");
 
   const {
     isSuccess: isApplicantSuccess,
@@ -22,12 +22,17 @@ const Applicant = (props) => {
   } = useQuery({
     queryKey: ["applicant"],
     queryFn: async () =>
-      await usingFetch("/api/applicant", "POST", { email: props.email }),
+      await usingFetch(
+        "/api/applicant",
+        "POST",
+        { email: props.email },
+        userCtx.accessToken
+      ),
   });
 
   useEffect(() => {
     if (isApplicantSuccess && applicantData) {
-      setApplicantName(applicantData.name); 
+      setApplicantName(applicantData.name);
       setApplicantId(applicantData._id);
     }
   }, [isApplicantSuccess, applicantData]);
@@ -39,7 +44,8 @@ const Applicant = (props) => {
     data: getJobsData,
   } = useQuery({
     queryKey: ["jobs"],
-    queryFn: async () => await usingFetch("/api/jobs", undefined, undefined),
+    queryFn: async () =>
+      await usingFetch("/api/jobs", undefined, undefined, userCtx.accessToken),
   });
 
   return (
@@ -52,7 +58,9 @@ const Applicant = (props) => {
       </div>
 
       <div className={styles.banner}>
-        <div className={styles.bannerTitle}>{`${applicantName}'s Dashboard`}</div>
+        <div
+          className={styles.bannerTitle}
+        >{`${applicantName}'s Dashboard`}</div>
       </div>
       <br />
       {isGetJobsFetching && <h1>Loading...</h1>}
@@ -63,7 +71,7 @@ const Applicant = (props) => {
             <JobListForApp
               key={item._id}
               jobId={item._id}
-              applicantId = {applicantId}
+              applicantId={applicantId}
               employerId={item.employer}
               title={item.position}
               jobDes={item.description}
