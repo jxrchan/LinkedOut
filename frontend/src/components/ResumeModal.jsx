@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
 import ReactDOM from "react-dom";
 import styles from "./ResumeModal.module.css";
+import UserContext from "../context/user"
 
 const OverLay = (props) => {
+  
+  const userCtx = useContext(UserContext)
   const usingFetch = useFetch();
 
   const { isSuccess, isError, error, isFetching, data } = useQuery({
@@ -13,7 +16,8 @@ const OverLay = (props) => {
       await usingFetch(
         `/employers/job/${props.applicantId}/${props.jobId}`,
         undefined,
-        undefined
+        undefined,
+        userCtx.accessToken
       ),
   });
 

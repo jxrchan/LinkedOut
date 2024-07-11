@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import useFetch from "../hooks/useFetch";
 import TerminatedJob from "./TerminatedJob";
 import Job from "./Job";
 import styles from "./Display.module.css";
+import UserContext from "../context/user"
 
 const Display = (props) => {
+  const userCtx = useContext(UserContext);
   const [employerId, setEmployerId] = useState("");
   const [employerName, setEmployerName] = useState("");
   const [description, setDescription] = useState("");
@@ -24,7 +26,7 @@ const Display = (props) => {
     data: employerData,
   } = useMutation({
     mutationFn: async () =>
-      await usingFetch(`/employers`, "POST", { email: props.email }),
+      await usingFetch(`/employers`, "POST", { email: props.email}, userCtx.accessToken),
   });
 
   useEffect(() => {
@@ -48,7 +50,7 @@ const Display = (props) => {
   } = useQuery({
     queryKey: ["active jobs"],
     queryFn: async () =>
-      await usingFetch(`/employers/jobs/${employerId}`, undefined, undefined),
+      await usingFetch(`/employers/jobs/${employerId}`, undefined, undefined, userCtx.accessToken),
     enabled: !!employerId,
   });
 
@@ -65,7 +67,7 @@ const Display = (props) => {
       await usingFetch(
         `/employers/terminated-jobs/${employerId}`,
         undefined,
-        undefined
+        undefined, userCtx.accessToken
       ),
     enabled: !!employerId,
   });
@@ -76,7 +78,7 @@ const Display = (props) => {
         position: position,
         description: description,
         employer: employerId,
-      },userct),
+      },userCtx.accessToken),
     onSuccess: () => {
       setPosition("");
       setDescription("");
