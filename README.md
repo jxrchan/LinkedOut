@@ -83,6 +83,15 @@ This is John Doe's resume. You can scroll up and down to see full resume and cli
 * Search for jobs easily using filters such aslocation, industry, job title, experience level, and salary range.
 * Create and manage the company profile, showcasing company culture and benefits.
 
+***.env***
+Backend
+PORT=5002
+DATABASE=mongodb+srv://lynn:QmihCVncOrXEmAQH@cluster0.bt0uyg5.mongodb.net/Joshua?retryWrites=true&w=majority&appName=Cluster0
+ACCESS_SECRET=D0YqgzDIj35owuBX0KwJxWbd4E1gyQXkC1wBV4bWGcwqDVqt6IBzUFa4qqBOc75KDEoCUDRaecXeNlOJE6f7p99LJ8xpexzJA0FB
+REFRESH_SECRET=frlRumCPMWJkbFP6OiVRSFbbUDkxu4dBbBvIHS2AySd2qfp39KN0a9ICHYX30wNb7q7Hd0D9yj0Qmso4OpmwEZf6Bj5EAC6qZfnW
+
+Frontend
+VITE_SERVER=http://localhost:5002
 
 
 
