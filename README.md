@@ -78,9 +78,9 @@ This is John Doe's resume. You can scroll up and down to see full resume and cli
 
 
 # Next Steps
-* Receving notifications about new job postings that match Job Seeker's criteria.
+* Receiving notifications about new job postings that match Job Seeker's criteria.
 * Create and edit Job Seeker's profile with personal details, skills, experiences, and education.
-* Search for jobs easily using filters such aslocation, industry, job title, experience level, and salary range.
+* Search for jobs easily using filters such as location, industry, job title, experience level, and salary range.
 * Create and manage the company profile, showcasing company culture and benefits.
 
 ***.env***
