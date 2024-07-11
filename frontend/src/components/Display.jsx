@@ -76,7 +76,7 @@ const Display = (props) => {
         position: position,
         description: description,
         employer: employerId,
-      }),
+      },userct),
     onSuccess: () => {
       setPosition("");
       setDescription("");

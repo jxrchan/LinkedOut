@@ -15,9 +15,9 @@ const {
   validateCheckEmail,
 } = require("../validators/auth");
 const checkErrorsLogin = require("../validators/checkErrorsLogin");
-const { authAdmin } = require("../middleware/auth");
+const { auth } = require("../middleware/auth");
 
-router.get("/users", authAdmin, getAllUsers);
+router.get("/users", auth, getAllUsers);
 router.post("/register", validateCheckEmail, checkErrorsLogin, checkValidEmail);
 router.put("/register", validateRegistrationData, checkErrorsLogin, register);
 router.post("/login", validateLoginData, checkErrorsLogin, login);

@@ -8,7 +8,7 @@ const {
   submitResume,
   getApplicant,
   applyJob,
-  checkAppliedJob
+  checkAppliedJob,
 } = require("../controllers/jobList");
 
 const {
@@ -18,15 +18,15 @@ const {
   validateUpdateBookData,
 } = require("../validators/books");
 const checkErrors = require("../validators/checkErrors");
-const { authAdmin, auth } = require("../middleware/auth");
+const { auth } = require("../middleware/auth");
 
-router.get("/jobs/seed", seedJobs);
-router.post("/applicant", getApplicant);
+router.get("/jobs/seed", auth, seedJobs);
+router.post("/applicant", auth, getApplicant);
 
-router.get("/jobs", getAllActiveJobs);
-router.post("/jobs", getJobById);
-router.post("/applied-jobs", checkAppliedJob)
-router.post("/jobs/apply", applyJob)
-router.post("/jobs/resume/:id", submitResume);
+router.get("/jobs", auth, getAllActiveJobs);
+router.post("/jobs", auth, getJobById);
+router.post("/applied-jobs", auth, checkAppliedJob);
+router.post("/jobs/apply", auth, applyJob);
+router.post("/jobs/resume/:id", auth, submitResume);
 
 module.exports = router;

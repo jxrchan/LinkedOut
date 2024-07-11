@@ -16,10 +16,15 @@ const OverLay = (props) => {
 
   const { mutate: applyJob } = useMutation({
     mutationFn: async () =>
-      await usingFetch("/api/jobs/apply", "POST", {
-        applicantId: props.applicantId,
-        jobId: props.jobId,
-      }),
+      await usingFetch(
+        "/api/jobs/apply",
+        "POST",
+        {
+          applicantId: props.applicantId,
+          jobId: props.jobId,
+        },
+        userCtx.accessToken
+      ),
   });
 
   const handleSubmit = async (e) => {
@@ -33,7 +38,8 @@ const OverLay = (props) => {
         {
           applicantId: props.applicantId,
           document: resumeText,
-        }
+        },
+        userCtx.accessToken
       );
       console.log(response.data);
       queryClient.invalidateQueries("jobs");
