@@ -89,11 +89,10 @@ Backend
 
 PORT=5002
 
-DATABASE=mongodb+srv://lynn:QmihCVncOrXEmAQH@cluster0.bt0uyg5.mongodb.net/Joshua?retryWrites=true&w=majority&appName=Cluster0
+DATABASE=
 
-ACCESS_SECRET=D0YqgzDIj35owuBX0KwJxWbd4E1gyQXkC1wBV4bWGcwqDVqt6IBzUFa4qqBOc75KDEoCUDRaecXeNlOJE6f7p99LJ8xpexzJA0FB
-
-REFRESH_SECRET=frlRumCPMWJkbFP6OiVRSFbbUDkxu4dBbBvIHS2AySd2qfp39KN0a9ICHYX30wNb7q7Hd0D9yj0Qmso4OpmwEZf6Bj5EAC6qZfnW
+ACCESS_SECRET=
+REFRESH_SECRET=
 
 Frontend
 
