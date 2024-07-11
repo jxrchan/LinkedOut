@@ -84,7 +84,7 @@ This is John Doe's resume. You can scroll up and down to see full resume and cli
 * Create and manage the company profile, showcasing company culture and benefits.
 
 ***.env***
-
+```
 Backend
 
 PORT=5002
@@ -94,10 +94,11 @@ DATABASE=
 ACCESS_SECRET=
 
 REFRESH_SECRET=
+```
 
 Frontend
-
+```
 VITE_SERVER=http://localhost:5002
-
+```
 
 
